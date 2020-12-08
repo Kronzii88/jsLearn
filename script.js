@@ -8,20 +8,26 @@ const clearButton = document.querySelector("#clear-todos");
 
 //function
 addTodo = (e) => {
-    e.preventDefault();
+    if(todoInput.value) {
+        e.preventDefault();
     
-    // membuat virtual DOM untuk element li
-    const li = document.createElement("li");
-    li.className = "list-group-item d-flex justify-content-between align-items-center mb-1";
-    li.appendChild(document.createTextNode(todoInput.value));
+        // membuat virtual DOM untuk element li
+        const li = document.createElement("li");
+        li.className = "list-group-item d-flex justify-content-between align-items-center mb-1";
+        li.appendChild(document.createTextNode(todoInput.value));
+        
+        const a = document.createElement("a");
+        a.href = "#";
+        a.className = "badge badge-danger delete-todo"; //penambahan className delete-todo untuk function deleteTodo    
+        a.innerHTML = "Delete";
+        li.appendChild(a);
+        
+        todoList.appendChild(li);
+        todoInput.value = "";
+    } else {
+        alert("anda belum memasukkan aktivitas");
+    }
     
-    const a = document.createElement("a");
-    a.href = "#";
-    a.className = "badge badge-danger delete-todo"; //penambahan className delete-todo untuk function deleteTodo    
-    a.innerHTML = "Delete";
-    li.appendChild(a);
-    
-    todoList.appendChild(li);
 
 }
 
