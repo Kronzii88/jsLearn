@@ -17,7 +17,7 @@ addTodo = (e) => {
     
     const a = document.createElement("a");
     a.href = "#";
-    a.className = "badge badge-danger";
+    a.className = "badge badge-danger delete-todo"; //penambahan className delete-todo untuk function deleteTodo    
     a.innerHTML = "Delete";
     li.appendChild(a);
     
@@ -25,5 +25,15 @@ addTodo = (e) => {
 
 }
 
+deleteTodo = (e) => {
+    e.preventDefault();
+    if(e.target.classList.contains("delete-todo")) {
+        console.log("terhapus");
+        const parent = e.target.parentElement;
+        parent.remove();
+    }
+}
+
 //event listener
 todoForm.addEventListener("submit", addTodo);
+todoList.addEventListener("click", deleteTodo);
