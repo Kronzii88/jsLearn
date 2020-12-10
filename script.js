@@ -40,6 +40,11 @@ deleteTodo = (e) => {
     }
 }
 
+clearTodo = () => {
+    console.log("clicked");
+    todoList.innerHTML = "";
+}
 //event listener
 todoForm.addEventListener("submit", addTodo);
 todoList.addEventListener("click", deleteTodo);
+clearButton.addEventListener("click", clearTodo)
